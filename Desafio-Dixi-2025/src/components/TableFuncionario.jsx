@@ -38,7 +38,7 @@ function TableFuncionario() {
         <div className="flex gap-0.5">
           <button
             className="bg-[#3379BC] w-[180px] h-[35px] ml-6 mt-3 shadow rounded
-           text-white font-semibold text-[18px] flex items-center justify-center gap-2  hover:bg-[#24598a]"
+           text-white font-semibold text-[18px] flex items-center justify-center gap-2  hover:bg-[#24598a] cursor-pointer"
           >
             <MagnifyingGlassIcon className="h-6 w-6 stroke-2" />
             Pesquisar
@@ -47,7 +47,7 @@ function TableFuncionario() {
             onClick={() => navigate("/cadastro")}
             className="w-[180px] h-[35px] ml-7 mt-3 shadow rounded border 
           border-[#3379BC] text-[#3379BC] font-semibold text-[18px] 
-          flex items-center justify-center gap-2 hover:bg-[#24598a] hover:text-white transition"
+          flex items-center justify-center gap-2 hover:bg-[#24598a] hover:text-white transition cursor-pointer"
           >
             <PlusIcon className="h-6 w-6" />
             Adicionar

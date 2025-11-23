@@ -68,8 +68,6 @@ Este projeto foi desenvolvido como parte do **Desafio Técnico Dixi 2025**, com 
 
 ## ▶️ Como Rodar o Projeto
 
-### 1. Clonar o repositório
-
 ```bash
 git clone https://github.com/seuusuario/Desafio-Dixi-2025.git
 cd Desafio-Dixi-2025
@@ -93,6 +91,7 @@ A prova avalia:
 - Clareza e manutenção da arquitetura
 
 ### 🔷 Cadastro de Funcionário
+
 - Nome completo
 - CPF
 - PIS
@@ -103,12 +102,14 @@ A prova avalia:
 - Máscaras (formatos)
 
 ### 🔷 Importação de AFD
+
 - Suporte aos padrões **1510** e **671**
 - Processamento dos registros
 - Classificação das marcações
 - Feedback de erros
 
 ### 🔷 Espelho Ponto
+
 - Horas normais
 - Horas extras
 - Adicional noturno
@@ -117,6 +118,7 @@ A prova avalia:
 - Separação por funcionário e por dia
 
 ### 🔷 Versionamento
+
 - Git com commits claros
 - README obrigatório
 
@@ -124,6 +126,5 @@ A prova avalia:
 
 ## ✨ Autores
 
-**Leander Antonio**
-**João V. Franze**
-```
+- **Leander Antonio**
+- **João V. Franze**
