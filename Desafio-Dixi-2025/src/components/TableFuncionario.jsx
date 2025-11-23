@@ -1,8 +1,10 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 
 function TableFuncionario() {
+  const navigate = useNavigate();
   const fields = [
     { label: "Nome do Funcionário", width: "w-[390px]" },
     { label: "CPF", width: "w-[165px]", placeholder: "000.000.000-00" },
@@ -42,6 +44,7 @@ function TableFuncionario() {
             Pesquisar
           </button>
           <button
+            onClick={() => navigate("/cadastro")}
             className="w-[180px] h-[35px] ml-7 mt-3 shadow rounded border 
           border-[#3379BC] text-[#3379BC] font-semibold text-[18px] 
           flex items-center justify-center gap-2 hover:bg-[#24598a] hover:text-white transition"
@@ -78,7 +81,7 @@ function TableFuncionario() {
 
             <tbody>
               {Array.from({ length: 8 }).map((_, index) => (
-                <tr key={index} className="text-center">
+                <tr key={index} className="text-center font-semibold">
                   <td className="py-2.5 p-2 border-t border-gray-300 flex items-center justify-center">
                     <PencilSquareIcon className=" h-7 w-7 text-[#3379BC] cursor-pointer hover:text-[#24598a] transition" />
                   </td>
