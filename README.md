@@ -79,6 +79,7 @@ npm install
 npm run dev
 
 acesse: http://localhost:5173/
+```
 
 ## 📘 Resumo Oficial da Prova Técnica
 
