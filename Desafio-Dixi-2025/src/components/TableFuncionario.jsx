@@ -1,5 +1,6 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/24/outline";
+import { PencilSquareIcon } from "@heroicons/react/24/outline";
 
 function TableFuncionario() {
   const fields = [
@@ -48,6 +49,79 @@ function TableFuncionario() {
             <PlusIcon className="h-6 w-6" />
             Adicionar
           </button>
+        </div>
+        {/* Tabela */}
+        <div className="mt-6 mx-6">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-[#EBEDEE] text-[#3379BC] font-semibold">
+                <th className="py-3 p-2 w-20 border-b border-gray-300">
+                  Editar
+                </th>
+                <th className="py-3 p-2 w-[380px] border-b border-gray-300 border-l">
+                  Nome
+                </th>
+                <th className="py-3 p-2 w-[150px] border-b border-gray-300 border-l">
+                  CPF
+                </th>
+                <th className="py-3 p-2 w-[150px] border-b border-gray-300 border-l">
+                  PIS
+                </th>
+                <th className="py-3 p-2 w-[130px] border-b border-gray-300 border-l">
+                  Matrícula
+                </th>
+                <th className="py-3 p-2 w-[130px] border-b border-gray-300 border-l">
+                  Admissão
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {Array.from({ length: 8 }).map((_, index) => (
+                <tr key={index} className="text-center">
+                  <td className="py-2.5 p-2 border-t border-gray-300 flex items-center justify-center">
+                    <PencilSquareIcon className=" h-7 w-7 text-[#3379BC] cursor-pointer hover:text-[#24598a] transition" />
+                  </td>
+                  <td className="py-3 p-2 border-t border-gray-300 border-l">
+                    Funcionário {index + 1}
+                  </td>
+                  <td className="py-3 p-2 border-t border-gray-300 border-l">
+                    000.000.000-00
+                  </td>
+                  <td className="py-3 p-2 border-t border-gray-300 border-l">
+                    00000000000
+                  </td>
+                  <td className="py-3 p-2 border-t border-gray-300 border-l">
+                    12345
+                  </td>
+                  <td className="py-3 p-2 border-t border-gray-300 border-l">
+                    01/01/2025
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {/* Paginação */}
+        <div className="flex items-center justify-center gap-6 mt-1 select-none">
+          {/* Botão anterior */}
+          <span
+            className="text-[#3379BC] text-2xl font-bold cursor-pointer hover:text-[#24598a] transition mb-3"
+            onClick={() => console.log("Página anterior")}
+          >
+            &lt;
+          </span>
+
+          {/* Número da página */}
+          <span className="text-[#3379BC] font-bold text-2x1 mb-2">1</span>
+
+          {/* Botão próximo */}
+          <span
+            className="text-[#3379BC] text-2xl font-bold cursor-pointer hover:text-[#24598a] mb-3"
+            onClick={() => console.log("Próxima página")}
+          >
+            &gt;
+          </span>
         </div>
       </div>
     </div>
