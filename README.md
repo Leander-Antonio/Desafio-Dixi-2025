@@ -127,4 +127,3 @@ A prova avalia:
 ## ✨ Autores
 
 - **Leander Antonio**
-- **João V. Franze**
