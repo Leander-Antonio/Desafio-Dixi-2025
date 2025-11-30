@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SideBar from "./components/SideBar";
 import TableFuncionario from "./components/TableFuncionario";
 import CadastroFuncionario from "./components/CadastroFuncionario";
+import EditarFuncionario from "./components/EditarFuncionario";
 
 function App() {
   return (
@@ -35,6 +36,19 @@ function App() {
                     Cadastro de Funcionário
                   </h1>
                   <CadastroFuncionario />
+                </>
+              }
+            />
+
+            {/* Tela Edição */}
+            <Route
+              path="/editar/:id"
+              element={
+                <>
+                  <h1 className="text-[#3379BC] text-4xl font-bold mb-4">
+                    Editar Funcionário
+                  </h1>
+                  <EditarFuncionario />
                 </>
               }
             />

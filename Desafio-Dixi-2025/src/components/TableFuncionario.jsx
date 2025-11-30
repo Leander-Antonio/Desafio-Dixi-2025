@@ -109,8 +109,14 @@ function TableFuncionario() {
                 {funcionariosPaginados.map((func) => (
                   <tr key={func.id} className="text-center font-semibold">
                     <td className="py-2.5 p-2 border-t border-gray-300 flex items-center justify-center">
-                      <PencilSquareIcon className=" h-7 w-7 text-[#3379BC] cursor-pointer hover:text-[#24598a] transition" />
+                      <button
+                        onClick={() => navigate(`/editar/${func.id}`)}
+                        className="cursor-pointer"
+                      >
+                        <PencilSquareIcon className="h-7 w-7 text-[#3379BC] hover:text-[#24598a] transition" />
+                      </button>
                     </td>
+
                     <td className="py-3 p-2 border-t border-gray-300 border-l">
                       {func.nome}
                     </td>

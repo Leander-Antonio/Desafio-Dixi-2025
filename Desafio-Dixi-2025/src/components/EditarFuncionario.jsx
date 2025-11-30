@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { XMarkIcon, CheckIcon } from "@heroicons/react/24/outline";
 
-function CadastroFuncionario() {
+function EditarFuncionario() {
   const navigate = useNavigate();
+  const { id } = useParams();
 
   // Estados
   const [nome, setNome] = useState("");
@@ -13,9 +14,40 @@ function CadastroFuncionario() {
   const [data, setData] = useState("");
   const [ativo, setAtivo] = useState(true);
 
-  // Enviar para o backend
-  const enviarFuncionario = async () => {
-    const funcionario = {
+  // Busca os dados do funcionario
+  useEffect(() => {
+    const fetchFuncionario = async () => {
+      try {
+        const resposta = await fetch(
+          `http://localhost:3001/funcionarios/${id}`
+        );
+        const data = await resposta.json();
+
+        if (data.error) {
+          alert("Funcionário não encontrado!");
+          navigate("/");
+          return;
+        }
+
+        // Preenche os campos com os dados do backend
+        setNome(data.nome);
+        setCpf(data.cpf);
+        setPis(data.pis);
+        setMatricula(data.matricula);
+        setData(data.data_admissao?.substring(0, 10)); // formatar yyyy-mm-dd
+        setAtivo(data.ativo === 1);
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao carregar dados do funcionário!");
+      }
+    };
+
+    fetchFuncionario();
+  }, [id, navigate]);
+
+  // Enviar alteração para o back
+  const editarFuncionario = async () => {
+    const funcionarioAtualizado = {
       nome,
       cpf,
       pis,
@@ -25,19 +57,17 @@ function CadastroFuncionario() {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/funcionarios", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(funcionario),
+      const resposta = await fetch(`http://localhost:3001/funcionarios/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(funcionarioAtualizado),
       });
 
-      const result = await response.json();
+      const result = await resposta.json();
       alert(result.message);
       navigate("/");
     } catch (error) {
-      alert("Erro ao salvar!");
+      alert("Erro ao atualizar funcionário!");
       console.error(error);
     }
   };
@@ -67,7 +97,6 @@ function CadastroFuncionario() {
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
               className="bg-white border border-gray-300 rounded p-2 w-40"
-              placeholder="000.000.000-00"
             />
           </div>
 
@@ -80,14 +109,12 @@ function CadastroFuncionario() {
               value={pis}
               onChange={(e) => setPis(e.target.value)}
               className="bg-white border border-gray-300 rounded p-2 w-40"
-              placeholder="000.00000.00-0"
             />
           </div>
         </div>
 
         {/* Matrícula + Situação + Data */}
         <div className="flex items-start gap-21 mt-4 justify-center">
-          {/* Coluna esquerda */}
           <div className="flex flex-col">
             <label className="text-[#3379BC] font-semibold">
               Matrícula<span className="text-red-500">*</span>
@@ -131,7 +158,7 @@ function CadastroFuncionario() {
             </div>
           </div>
 
-          {/* Coluna direita */}
+          {/* Data */}
           <div className="flex flex-col">
             <label className="text-[#3379BC] font-semibold">
               Data de Admissão<span className="text-red-500">*</span>
@@ -164,11 +191,11 @@ function CadastroFuncionario() {
             </button>
 
             <button
-              onClick={enviarFuncionario}
+              onClick={editarFuncionario}
               className="bg-[#3379BC] w-[190px] h-10 shadow rounded text-white font-semibold hover:bg-[#24598a] flex items-center justify-center gap-3"
             >
               <CheckIcon className="w-5 h-5 stroke-3" />
-              Salvar
+              Editar
             </button>
           </div>
         </div>
@@ -177,4 +204,4 @@ function CadastroFuncionario() {
   );
 }
 
-export default CadastroFuncionario;
+export default EditarFuncionario;

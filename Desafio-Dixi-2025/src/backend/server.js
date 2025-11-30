@@ -56,6 +56,55 @@ app.get("/funcionarios", (req, res) => {
   });
 });
 
+// Rota: buscar funcionário por ID
+app.get("/funcionarios/:id", (req, res) => {
+  const id = req.params.id;
+
+  const sql = "SELECT * FROM funcionarios WHERE id = ?";
+
+  db.query(sql, [id], (err, results) => {
+    if (err) {
+      console.error("Erro ao buscar funcionário:", err);
+      return res.status(500).json({ error: "Erro no servidor" });
+    }
+
+    if (results.length === 0) {
+      return res.status(404).json({ error: "Funcionário não encontrado" });
+    }
+
+    res.json(results[0]);
+  });
+});
+
+// Rota: atualizar funcionário
+app.put("/funcionarios/:id", (req, res) => {
+  const { id } = req.params;
+  const { nome, cpf, pis, matricula, data_admissao, ativo } = req.body;
+
+  const sql = `
+    UPDATE funcionarios
+    SET nome = ?, cpf = ?, pis = ?, matricula = ?, data_admissao = ?, ativo = ?
+    WHERE id = ?
+  `;
+
+  db.query(
+    sql,
+    [nome, cpf, pis, matricula, data_admissao, ativo, id],
+    (err, result) => {
+      if (err) {
+        console.error("Erro ao atualizar funcionário:", err);
+        return res.status(500).json({ error: "Erro no servidor" });
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ error: "Funcionário não encontrado" });
+      }
+
+      res.json({ message: "Funcionário atualizado com sucesso!" });
+    }
+  );
+});
+
 // Porta do servidor
 const port = 3001;
 app.listen(port, () => {
