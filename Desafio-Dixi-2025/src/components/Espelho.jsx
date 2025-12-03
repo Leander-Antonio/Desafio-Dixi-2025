@@ -60,7 +60,7 @@ function Espelho() {
           <thead>
             <tr className="bg-[#EBEDEE] text-[#3379BC] font-semibold text-[1.18rem]">
               <th className="py-1 p-2 w-20 border-b border-red">
-                <button className=""></button>
+                <button className="">⬛</button>
               </th>
               <th className="py-1.5 p-2 w-[200px] border-b border-gray-300 border-l">
                 Data
@@ -86,7 +86,37 @@ function Espelho() {
             </tr>
           </thead>
 
-          <tbody></tbody>
+          <tbody>
+            {/* Linha de exemplo */}
+            <tr className="text-center font-semibold">
+              {/* Coluna do botão */}
+              <td className="py-2.5 p-2 border-t border-gray-300 flex items-center justify-center">
+                <button className="text-[#3379BC] hover:text-[#24598a] font-bold">
+                  ⬛
+                </button>
+              </td>
+
+              <td className="py-3 p-2 border-t border-gray-300 border-l">
+                05/01/2025
+              </td>
+
+              <td className="py-3 p-2 border-t border-gray-300 border-l">
+                08:00 • 12:00 • 13:00 • 17:00
+              </td>
+
+              <td className="py-3 p-2 border-t border-gray-300 border-l">8h</td>
+
+              <td className="py-3 p-2 border-t border-gray-300 border-l">1h</td>
+
+              <td className="py-3 p-2 border-t border-gray-300 border-l">0</td>
+
+              <td className="py-3 p-2 border-t border-gray-300 border-l">0</td>
+
+              <td className="py-3 p-2 border-t border-gray-300 border-l">
+                0.5h
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>
